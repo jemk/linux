@@ -126,9 +126,9 @@ static void cedrus_h265_frame_info_write_dpb(struct cedrus_ctx *ctx,
 
 	for (i = 0; i < num_active_dpb_entries; i++) {
 		dst_luma_addr = cedrus_dst_buf_addr(ctx, dpb[i].buffer_index,
-						    0); // FIXME - PHYS_OFFSET ?
+						    0);
 		dst_chroma_addr = cedrus_dst_buf_addr(ctx, dpb[i].buffer_index,
-						      1); // FIXME - PHYS_OFFSET ?
+						      1);
 		mv_col_buf_addr[0] = cedrus_h265_frame_info_mv_col_buf_addr(ctx,
 			dpb[i].buffer_index, 0);
 		pic_order_cnt[0] = dpb[i].pic_order_cnt[0];
@@ -437,8 +437,8 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
 		run->dst->vb2_buf.index, 0);
 	mv_col_buf_addr[1] = cedrus_h265_frame_info_mv_col_buf_addr(ctx,
 		run->dst->vb2_buf.index, 1);
-	dst_luma_addr = cedrus_dst_buf_addr(ctx, run->dst->vb2_buf.index, 0); // FIXME - PHYS_OFFSET ?
-	dst_chroma_addr = cedrus_dst_buf_addr(ctx, run->dst->vb2_buf.index, 1); // FIXME - PHYS_OFFSET ?
+	dst_luma_addr = cedrus_dst_buf_addr(ctx, run->dst->vb2_buf.index, 0);
+	dst_chroma_addr = cedrus_dst_buf_addr(ctx, run->dst->vb2_buf.index, 1);
 
 	cedrus_h265_frame_info_write_single(dev, output_pic_list_index,
 					    slice_params->pic_struct != 0,
