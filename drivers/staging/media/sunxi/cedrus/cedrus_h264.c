@@ -183,9 +183,9 @@ static void _cedrus_write_ref_list(struct cedrus_ctx *ctx,
 			cedrus_buf = vb2_v4l2_to_cedrus_buffer(ref_buf);
 			position = cedrus_buf->codec.h264.position;
 
-			sram_array[i] |= position << (j * 8 + 1);
+			sram_array[i / 4] |= position << (j * 8 + 1);
 			if (ref_buf->field == V4L2_FIELD_BOTTOM)
-				sram_array[i] |= BIT(j * 8);
+				sram_array[i / 4] |= BIT(j * 8);
 		}
 	}
 
